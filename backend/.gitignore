@@ -178,3 +178,9 @@ dmypy.json
 # End of https://www.gitignore.io/api/flask,python
 
 migrations
+
+# exclude everything
+src/media/*
+
+# exception to the rule
+!src/media/.gitkeep 
