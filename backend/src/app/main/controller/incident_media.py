@@ -16,6 +16,7 @@ incident_media_fields = {
     
     'id' : fields.Integer,
     'file_name' : fields.String(1024),
+    'original_name' : fields.String(1024),
     'incident_id' : fields.Integer,
     'uploader_id' : fields.Integer,
     'created_date' : fields.DateTime,

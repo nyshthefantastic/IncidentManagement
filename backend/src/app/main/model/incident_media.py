@@ -8,6 +8,7 @@ class IncidentMedia(db.Model):
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     file_name = db.Column(db.String(1024))
+    original_name = db.Column(db.String(1024))
     incident_id = db.Column(db.Integer, db.ForeignKey('incident.id'))
     uploader_id = db.Column(db.String(1024))
     created_date = db.Column(db.Integer, default=int(time.time()))

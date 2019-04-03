@@ -11,6 +11,10 @@ def save_new_incident_media(data):
     except KeyError:
         pass
     try:
+        new_incident_media.original_name = data['original_name']
+    except KeyError:
+        pass
+    try:
         new_incident_media.incident_id = data['incident_id']
     except KeyError:
         pass
@@ -63,6 +67,11 @@ def update_a_incident_media(id, data):
     SUCESS = 'success'
     try:
         incident_media.file_name = data['file_name']
+        status = SUCESS
+    except KeyError:
+        pass
+    try:
+        incident_media.original_name = data['original_name']
         status = SUCESS
     except KeyError:
         pass
