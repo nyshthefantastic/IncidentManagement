@@ -16,14 +16,10 @@ incident_media_fields = {
     
     'id' : fields.Integer,
     'file_name' : fields.String(1024),
-    'url' : fields.String(1024),
     'incident_id' : fields.Integer,
-    'user_id' : fields.Integer,
-    'role_id' : fields.Integer,
-    'is_active' : fields.Boolean,
+    'uploader_id' : fields.Integer,
     'created_date' : fields.DateTime,
     'updated_date' : fields.DateTime,
-    'deleted_date' : fields.DateTime,
 }
 
 incident_media_list_fields = {

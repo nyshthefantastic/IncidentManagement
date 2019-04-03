@@ -11,23 +11,11 @@ def save_new_incident_media(data):
     except KeyError:
         pass
     try:
-        new_incident_media.url = data['url']
-    except KeyError:
-        pass
-    try:
         new_incident_media.incident_id = data['incident_id']
     except KeyError:
         pass
     try:
-        new_incident_media.user_id = data['user_id']
-    except KeyError:
-        pass
-    try:
-        new_incident_media.role_id = data['role_id']
-    except KeyError:
-        pass
-    try:
-        new_incident_media.is_active = data['is_active']
+        new_incident_media.uploader_id = data['uploader_id']
     except KeyError:
         pass
     try:
@@ -36,10 +24,6 @@ def save_new_incident_media(data):
         pass
     try:
         new_incident_media.updated_date = data['updated_date']
-    except KeyError:
-        pass
-    try:
-        new_incident_media.deleted_date = data['deleted_date']
     except KeyError:
         pass
     
@@ -93,17 +77,7 @@ def update_a_incident_media(id, data):
     except KeyError:
         pass
     try:
-        incident_media.user_id = data['user_id']
-        status = SUCESS
-    except KeyError:
-        pass
-    try:
-        incident_media.role_id = data['role_id']
-        status = SUCESS
-    except KeyError:
-        pass
-    try:
-        incident_media.is_active = data['is_active']
+        incident_media.uploader_id = data['uploader_id']
         status = SUCESS
     except KeyError:
         pass
@@ -114,11 +88,6 @@ def update_a_incident_media(id, data):
         pass
     try:
         incident_media.updated_date = data['updated_date']
-        status = SUCESS
-    except KeyError:
-        pass
-    try:
-        incident_media.deleted_date = data['deleted_date']
         status = SUCESS
     except KeyError:
         pass
