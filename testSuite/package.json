@@ -1,0 +1,27 @@
+{
+  "name": "testSuite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "http-server": "^0.10.0",
+    "jest-puppeteer": "^4.3.0",
+    "mocha": "^4.0.1",
+    "puppeteer": "^1.20.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^24.9.0"
+  },
+  "jest": {
+    "verbose": true,
+    "preset": "jest-puppeteer"
+  }
+}
