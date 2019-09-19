@@ -1,3 +1,5 @@
 .DS_Store
 .vscode/
 data/
+testSuite/node_modules/
+node_modules/
