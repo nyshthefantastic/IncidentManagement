@@ -49,7 +49,7 @@ describe('Create Page', () => {
     // await page.screenshot({ path: screenshot })
     await page.click("button[type=submit]")
     let checkUrl = await page.evaluate(() => location.href);
-    expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/review')
+    expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/incident')
   })
 })
 
@@ -58,13 +58,13 @@ describe('Report', () => {
     await page.goto('https://incidents.ecdev.opensource.lk/app/reports', { waitUntil: 'networkidle0' })
     await page.waitForXPath("//td[contains(., 'Police Division Summary Report')]").then(selector => selector.click())
     let checkUrl = await page.evaluate(() => location.href);
-    expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=di_division_summary_report')
+    expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=police_division_summary_report')
   })
 })
 describe('Report2', () => {
-  test('On Report Click Caategory-wise Summary Report', async () => {
+  test('On Report Click Category-wise Summary Report', async () => {
     await page.goto('https://incidents.ecdev.opensource.lk/app/reports', { waitUntil: 'networkidle0' })
-    await page.waitForXPath("//td[contains(., 'Caategory-wise Summary Report')]").then(selector => selector.click())
+    await page.waitForXPath("//td[contains(., 'Category-wise Summary Report')]").then(selector => selector.click())
     let checkUrl = await page.evaluate(() => location.href);
     expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=category_wise_summary_report')
   })
