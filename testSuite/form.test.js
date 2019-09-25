@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 let browser
 let page
-jest.setTimeout(3000000);
+jest.setTimeout(30000000);
 
 beforeAll(async () => {
   browser = await puppeteer.launch({ headless: false })
@@ -39,11 +39,12 @@ describe('Create Page', () => {
     await page.click('#select-divisionalSecretariat')
     await page.click('#select-pollingDivision')
     await page.click('#select-pollingStation')
+    await page.waitForXPath("//span[contains(., '10')]").then(selector => selector.click())
     await page.type('#city', 'New City')
     await page.type('#reporterName', 'New Complainer Name')
     await page.type('#reporterAddress', 'New Complainer Address')
     await page.type('#reporterMobile', '0773356745')
-    await page.type('#reporterEmail', 'abc@gmail.com', { delay: 20 })
+    await page.type('#reporterEmail', 'abc@gmail.com')
     await page.click('#reporterConsent')
 
     // await page.screenshot({ path: screenshot })
@@ -86,6 +87,22 @@ describe('Home', () => {
 
     //  let checkUrl = await page.evaluate(() => location.href);
     // expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=di_division_summary_report')
+  })
+})
+describe('Review', () => {
+  test('On Click Export as PDF', async () => {
+    await page.goto('https://incidents.ecdev.opensource.lk/app/review', { waitUntil: 'networkidle0' })
+    await page.waitForXPath("//span[contains(., 'Export as PDF')]").then(selector => selector.click())
+   // let checkUrl = await page.evaluate(() => location.href);
+   // expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=category_wise_summary_report')
+  })
+})
+describe('Review', () => {
+  test('On Click Export as CSV', async () => {
+    await page.goto('https://incidents.ecdev.opensource.lk/app/review', { waitUntil: 'networkidle0' })
+    await page.waitForXPath("//span[contains(., 'Export as CSV')]").then(selector => selector.click())
+   // let checkUrl = await page.evaluate(() => location.href);
+   // expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=category_wise_summary_report')
   })
 })
 afterAll(async () => {
