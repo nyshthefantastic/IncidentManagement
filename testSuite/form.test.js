@@ -29,14 +29,17 @@ describe('Create Page', () => {
     const input = await page.$('input[name=title]');
     await input.click({ clickCount: 3 })
     await input.type("New Title");
-    await page.type('textarea[name=description]', 'New Description')
+    await page.type('textarea[name=description]', 'New Description')  
     await page.waitForXPath("//span[contains(., 'Occurring')]").then(selector => selector.click())
+    await page.$eval('#occured_date', el => el.value = 't2019-10-02T22:59');
+
     await page.type('#location', 'New location')
     await page.type('#address', 'New Address')
+
     await page.type('#city', 'New city')
-    await page.click('#select-province')
-    await page.click('#select-district')
-    await page.click('#select-divisionalSecretariat')
+    await page.click('#select-province', { delay: 20 })
+    await page.click('#select-district', { delay: 20 })
+    await page.click('#select-divisionalSecretariat', { delay: 20 })
     await page.click('#select-pollingDivision')
     await page.click('#select-pollingStation')
     await page.waitForXPath("//span[contains(., '10')]").then(selector => selector.click())
@@ -51,9 +54,19 @@ describe('Create Page', () => {
     await page.click("button[type=submit]")
     let checkUrl = await page.evaluate(() => location.href);
     expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/incident')
+  
   })
 })
 
+// describe('Review click td', () => {
+//   test('On Click td', async () => {
+//     await page.goto('https://incidents.ecdev.opensource.lk/app/review', { waitUntil: 'networkidle0' })
+//     await page.click("button[type=submit]")
+//     await page.waitForXPath("//td[contains(., 'sflslsfk sjflsjd lsfjksdf ksdlfsjfkslfjsldl')]").then(selector => selector.click())
+
+//   })
+// })
+/*
 describe('Report', () => {
   test('On Report Click Police Division Summary Report', async () => {
     await page.goto('https://incidents.ecdev.opensource.lk/app/reports', { waitUntil: 'networkidle0' })
@@ -62,14 +75,17 @@ describe('Report', () => {
     expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=police_division_summary_report')
   })
 })
+
 describe('Report2', () => {
   test('On Report Click Category-wise Summary Report', async () => {
     await page.goto('https://incidents.ecdev.opensource.lk/app/reports', { waitUntil: 'networkidle0' })
-    await page.waitForXPath("//td[contains(., 'Category-wise Summary Report')]").then(selector => selector.click())
+    await page.waitForXPath("//div[contains(., ' Category Wise ')]").then(selector => selector.click())
+    await page.waitForXPath("//span[contains(., 'Generate Report')]").then(selector => selector.click())
+
     let checkUrl = await page.evaluate(() => location.href);
-    expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=category_wise_summary_report')
+    expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report*')
   })
-})
+})*/
 describe('Archive', () => {
   test('On Text Search', async () => {
     await page.goto('https://incidents.ecdev.opensource.lk/app/archive', { waitUntil: 'networkidle0' })
@@ -80,6 +96,7 @@ describe('Archive', () => {
     // expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=di_division_summary_report')
   })
 })
+
 describe('Home', () => {
   test('On Incident Click', async () => {
     await page.goto('https://incidents.ecdev.opensource.lk/app/home', { waitUntil: 'networkidle0' })
@@ -103,6 +120,26 @@ describe('Review', () => {
     await page.waitForXPath("//span[contains(., 'Export as CSV')]").then(selector => selector.click())
    // let checkUrl = await page.evaluate(() => location.href);
    // expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=category_wise_summary_report')
+  })
+})
+
+describe('Archive', () => {
+  test('On Click Archive', async () => {
+    await page.goto('https://incidents.ecdev.opensource.lk/app/archive', { waitUntil: 'networkidle0' })
+  
+    await page.type('#outlined-full-width', 'Guest')
+    await page.click("button[type=submit]")
+
+    // let checkUrl = await page.evaluate(() => location.href);
+   // expect(checkUrl).toBe('https://incidents.ecdev.opensource.lk/app/reports/view?report=category_wise_summary_report')
+  })
+})
+
+describe('Archive PDF', () => {
+  test('On Click Archive Export as PDF', async () => {
+    await page.goto('https://incidents.ecdev.opensource.lk/app/archive', { waitUntil: 'networkidle0' })
+  
+    await page.waitForXPath("//span[contains(., 'Export as PDF')]").then(selector => selector.click())
   })
 })
 afterAll(async () => {
